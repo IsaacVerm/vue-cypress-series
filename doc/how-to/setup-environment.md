@@ -1,0 +1,1 @@
+Just run `npm install` in the root.
