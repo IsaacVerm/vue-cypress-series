@@ -6,14 +6,32 @@
 </head>
 <body>
   <div id="app">
-    {{ message }}
+    <ul>
+        <li v-for="player in players">
+            {{ player }}
+        </li>
+    </ul>
+    <button v-on:click="capitalize">Change to uppercase</button>
   </div>
 
   <script>
     var app = new Vue({
       el: '#app',
       data: {
-        message: 'Hello Vue!'
+        count: 0,
+        players: ["Carlsen", "Caruana", "Ding", "Nepomniachtchi", "Vachier-Lagrave"]
+      },
+      methods: {
+          capitalize: function() {
+            this.players = this.players.map(player => {
+                if (this.count % 2) {
+                    return player.toUpperCase()
+                } else {
+                    return player.toLowerCase()
+                }
+            })
+            ++this.count
+          }
       }
     })
   </script>
